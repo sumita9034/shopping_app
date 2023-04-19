@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "322764646178",
+    "project_id": "online-ordering-system-a5e4d",
+    "storage_bucket": "online-ordering-system-a5e4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322764646178:android:43aa57b36e1e84fa3b277b",
+        "android_client_info": {
+          "package_name": "com.example.shopping_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322764646178-c8kmmeimvanbirvgm0odfs9qm8i69kq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj6aSn1Hsv8aV364HNNHQBS53V8rIz2sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322764646178-c8kmmeimvanbirvgm0odfs9qm8i69kq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
