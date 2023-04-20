@@ -2,12 +2,18 @@
 
 ## A new Flutter project.
 ## What's inside
-Drawer
-Routing
-State Managemet using Provider
-Authentication Ready
-Home Slider
-Cards, List Items
+ Drawer
+
+ Routing
+
+ State Managemet using Provider
+
+ Authentication Ready
+
+ Home Slider
+
+ Cards, List Items
+
 ## Screens it contains:
 
 => Splash Screen
