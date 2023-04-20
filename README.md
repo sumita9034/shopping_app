@@ -1,6 +1,33 @@
 # shopping_app
 
-A new Flutter project.
+## A new Flutter project.
+## What's inside
+Drawer
+Routing
+State Managemet using Provider
+Authentication Ready
+Home Slider
+Cards, List Items
+## Screens it contains:
+=> Login
+
+=> Forgot Password
+
+=> Sign Up
+
+=> Complete Profile
+
+=> OTP Verification
+
+=> Home Page
+
+=> Product Details
+
+=> Order
+
+=> Profile
+
+=> Bottom Navigation Bar
 
 ## Getting Started
 

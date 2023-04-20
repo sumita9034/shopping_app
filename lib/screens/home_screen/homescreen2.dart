@@ -85,215 +85,199 @@ class _MyHomePage1State extends State<MyHomePage1> {
                     Icons.shopping_cart_outlined,
                     size: 28,
                   ),
-            // child: badges.Badge(
-            //   badgeStyle: badges.BadgeStyle(badgeColor: Colors.red),
-            //   position: badges.BadgePosition.topEnd(
-            //     top: 3,
-            //     end: -2,
-            //   ),
-            //   ignorePointer: false,
-            //   badgeContent: isLoading == true ? Text(mainData[0].id.length.toString(),style: TextStyle(color: Colors.white),) : Text("0",style: TextStyle(color: Colors.white)),
-            //   child: IconButton(
-            //     onPressed: () {
-            //       Navigator.of(context)
-            //           .push((MaterialPageRoute(builder: (context) => Cart())));
-            //     },
-            //     icon: Icon(
-            //       Icons.shopping_cart_outlined,
-            //       size: 28,
-            //     ),
-            //   ),
-            // ),
+           
           ),)
         ],
       ),
-      body: FutureBuilder(
-        future: GetProduct(),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            List<Datum> datum = snapshot.data;
+      body:
+         FutureBuilder(
+          future: GetProduct(),
+          builder: (context, AsyncSnapshot snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              List<Datum> datum = snapshot.data;
 
-            return
+              return
 
-                //color: Colors.pinkAccent,
-                Container(
-              // color: Colors.amberAccent,
-              padding: EdgeInsets.only(top: 15, left: 15, right: 15),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12.0,
-                    mainAxisExtent: 276,
-                    mainAxisSpacing: 12.0),
-                itemCount: datum.length,
-                itemBuilder: (BuildContext context, int index) {
-                  // bool isFavorite = favProvider.Item.any(
-                  //     (element) => element.datum[index].id);
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Color.fromARGB(100, 22, 44, 33),
-                    ),
-                    //padding: EdgeInsets.only(left: 5),
-                    child: Column(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(16.0),
-                            topRight: Radius.circular(16.0),
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/ProductDetails',
-                                  arguments: {
-                                    'price': datum[index].price,
-                                    'imageurl': datum[index].imageUrl,
-                                    'description': datum[index].description,
-                                    'title': datum[index].title,
-                                    'index': index,
-                                  });
-                            },
-                            child: Column(
-                              children: [
-                                Container(
-                                    color: Colors.white,
-                                    child: Stack(
-                                      children: [
-                                        Image.network(
-                                          datum[index].imageUrl,
-                                          height: 160,
-                                          width: double.infinity,
-                                          fit: BoxFit.fitHeight,
-                                        ),
-                                        Positioned(
-                                            top: -3,
-                                            right: -6,
-                                            child: datum[index]
-                                                        .watchListItemId ==
-                                                    ''
-                                                ? IconButton(
-                                                    onPressed: ()async {
-                                                      await favProvider.AddtoWish(
-                                                          datum[index].id);
-
-                                                     // GetProduct();
-                                                      print('added');
-                                                    },
-                                                    icon: Icon(
-                                                      Icons.favorite_outline,
-                                                      color: Colors.black,
-                                                    ))
-                                                : IconButton(
-                                                    onPressed: () {
-                                                      favProvider.Removewish(
-                                                          favProvider.Item[0]
-                                                              .data[index].id);
-
-                                                      print(
-                                                          'already added to cart !');
-                                                    },
-                                                    icon: Icon(
-                                                      Icons.favorite,
-                                                      color: Colors.red,
-                                                    )))
-                                      ],
-                                    )),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 5, top: 5),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: Text(
-                                        datum[index].title,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ))
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 3,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 5),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: Text(
-                                        datum[index].description,
-                                        maxLines: 2,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 0,
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 20)),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        datum[index].price,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .subtitle1!
-                                            .merge(TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 24,
-                                              color: Colors.grey.shade800,
-                                            )),
-                                      ),
-                                      datum[index].quantity == 0
-                                          ? IconButton(
-                                              onPressed: () {
-                                                AddToCart(datum[index].id);
-                                                /* if (datum[index].id == null) {
-                                                  AddToCart(datum[index].id);
-                                                  GetProduct();
-                                                  print('added');
-                                                } else {
-
-
-                                                  print(
-                                                      'already added to cart !');
-                                                }*/
-                                              },
-                                              icon: Icon(
-                                                Icons.shopping_cart_outlined,
-                                                color: Colors.black,
-                                              ))
-                                          : IconButton(
-                                              onPressed: () {},
-                                              icon: Icon(
-                                                Icons.done_outline,
-                                                color: Colors.black,
-                                              ))
-                                    ],
-                                  ),
-                                )
-                              ],
+                  //color: Colors.pinkAccent,
+                  Container(
+                // color: Colors.amberAccent,
+                padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12.0,
+                      mainAxisExtent: 276,
+                      mainAxisSpacing: 12.0),
+                  itemCount: datum.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    // bool isFavorite = favProvider.Item.any(
+                    //     (element) => element.datum[index].id);
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Color.fromARGB(100, 22, 44, 33),
+                      ),
+                      //padding: EdgeInsets.only(left: 5),
+                      child: Column(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(16.0),
+                              topRight: Radius.circular(16.0),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ),
-            );
-          }
-        },
-      ),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/ProductDetails',
+                                    arguments: {
+                                      'price': datum[index].price,
+                                      'imageurl': datum[index].imageUrl,
+                                      'description': datum[index].description,
+                                      'title': datum[index].title,
+                                      'index': index,
+                                    });
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                      color: Colors.white,
+                                      child: Stack(
+                                        children: [
+                                          Image.network(
+                                            datum[index].imageUrl,
+                                            height: 160,
+                                            width: double.infinity,
+                                            fit: BoxFit.fitHeight,
+                                          ),
+                                          Positioned(
+                                              top: -3,
+                                              right: -6,
+                                              child: datum[index]
+                                                          .watchListItemId ==
+                                                      ''
+                                                  ? IconButton(
+                                                      onPressed: ()async {
+                                                        await favProvider.AddtoWish(
+                                                            datum[index].id);
+
+                                                       // GetProduct();
+                                                        print('added');
+                                                      },
+                                                      icon: Icon(
+                                                        Icons.favorite_outline,
+                                                        color: Colors.black,
+                                                      ))
+                                                  : IconButton(
+                                                      onPressed: () {
+                                                        favProvider.Removewish(
+                                                            favProvider.Item[0]
+                                                                .data[index].id);
+
+                                                        print(
+                                                            'already added to cart !');
+                                                      },
+                                                      icon: Icon(
+                                                        Icons.favorite,
+                                                        color: Colors.red,
+                                                      )))
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 5, top: 5),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                            child: Text(
+                                          datum[index].title,
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ))
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 5),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                            child: Text(
+                                          datum[index].description,
+                                          maxLines: 2,
+                                        )),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 0,
+                                  ),
+                                  Padding(padding: EdgeInsets.only(left: 20)),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          datum[index].price,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subtitle1!
+                                              .merge(TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 24,
+                                                color: Colors.grey.shade800,
+                                              )),
+                                        ),
+                                        datum[index].quantity == 0
+                                            ? IconButton(
+                                                onPressed: () {
+                                                  AddToCart(datum[index].id);
+                                                  /* if (datum[index].id == null) {
+                                                    AddToCart(datum[index].id);
+                                                    GetProduct();
+                                                    print('added');
+                                                  } else {
+
+
+                                                    print(
+                                                        'already added to cart !');
+                                                  }*/
+                                                },
+                                                icon: Icon(
+                                                  Icons.shopping_cart_outlined,
+                                                  color: Colors.black,
+                                                ))
+                                            : IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(
+                                                  Icons.done_outline,
+                                                  color: Colors.black,
+                                                ))
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              );
+            }
+          },
+        ),
+
       drawer: Drawer(
         child: ListView(
           children: <Widget>[

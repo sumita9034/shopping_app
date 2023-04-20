@@ -37,7 +37,7 @@ class MyHomePageState extends State<MyHomePage> {
      var sharePref = await SharedPreferences.getInstance();
 
     var isLogginedIn = sharePref.getBool(Keylogin);
-    Timer(Duration(seconds: 2), () {
+    Timer(Duration(seconds: 3), () {
       if (isLogginedIn != null) {
         if (isLogginedIn) {
           Navigator.pushReplacement(

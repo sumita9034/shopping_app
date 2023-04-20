@@ -3,7 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../screens/profile_screen/profile.dart';
 import '../screens/favorite_screen/favoriteview.dart';
-import '../notification.dart';
+import '../order_histroy.dart';
 import '../screens/home_screen/homescreen2.dart';
 
 class BottomBar extends StatefulWidget {
