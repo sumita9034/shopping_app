@@ -14,8 +14,7 @@ class Cartprovider extends ChangeNotifier {
 
   Future<List<CartAddItemModelClass>> GetCart() async {
     List<CartAddItemModelClass> _Item1 = [];
-     //Uri url = Uri.parse("https://shopping-app-backend-t4ay.onrender.com/cart/getMyCart");
-    // var res = await http.get(url);
+
     try {
       final prefs = await SharedPreferences.getInstance();
       final jwtToken = prefs.getString('jwtToken'.toString()) ?? '';
@@ -81,8 +80,7 @@ class Cartprovider extends ChangeNotifier {
     }
   }
  Future<void> DecreaseItem(String cartItemId) async {
-     // final uri = Uri.parse(
-     //    "https://shopping-app-backend-t4ay.onrender.com/cart/decreaseProductQuantity");
+
     var requestBody={
 
       'cartItemId':cartItemId,
@@ -119,8 +117,7 @@ class Cartprovider extends ChangeNotifier {
   }
 
  Future<void> RemoveFromCart(String cartItemId) async {
-     // final uri = Uri.parse(
-     //     "https://shopping-app-backend-t4ay.onrender.com/cart/removeProductFromCart");
+
     var requestBody={
 
       "cartItemId": cartItemId

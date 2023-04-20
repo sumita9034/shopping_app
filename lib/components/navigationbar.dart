@@ -27,7 +27,7 @@ class _BottomBarState extends State<BottomBar> {
       body: screen[_index],
       bottomNavigationBar: GNav(
         color: Colors.grey.shade600,
-        hoverColor: Colors.black,
+        hoverColor: Colors.blue,
         selectedIndex: _index,
         // index: _index,
         onTabChange: (value) {
