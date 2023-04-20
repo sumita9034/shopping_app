@@ -9,6 +9,9 @@ Authentication Ready
 Home Slider
 Cards, List Items
 ## Screens it contains:
+
+=> Splash Screen
+
 => Login
 
 => Forgot Password
@@ -25,9 +28,12 @@ Cards, List Items
 
 => Order
 
+=> Add toCart
+
 => Profile
 
 => Bottom Navigation Bar
+
 
 ## Getting Started
 
